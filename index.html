@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <title>MechEngPrinciples</title>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles/w3.css"> 
+        <link rel="stylesheet" href="styles/myCSS.css"> 
+        <link rel="stylesheet" href="styles/w3-theme-blue.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" async  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" sync></script>
+
+    </head>
+
+    <body>
+        
+        <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width:300px;" id="mySidebar">
+            
+            <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+            
+            <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="index.html"><img src="images/logo.png" style="width:80%;"></a>
+            <a href="statics.html" class="w3-bar-item w3-button">Statics</a>
+            <a href="#" class="w3-bar-item w3-button">Equilibrium</a>
+            <a href="#" class="w3-bar-item w3-button">Pin Jointed Structures</a>
+        
+        </div>
+        
+        <div class="w3-theme">
+            
+            <i class="fa fa-bars w3-button w3-theme w3-xlarge" onclick="w3_open()"></i>
+            
+            <header class="w3-container w3-theme w3-padding-10 w3-center">
+                <h1 class="w3-xxxlarge ">Mechanical Engineering Principles</h1>
+            </header>
+            
+        </div>
+        
+              
+        <div class="w3-panel ">
+            
+            <p>A  website that focusses on fundamental Mechanical Engineering Principles.
+            <img src="images/jet-engine-turbine.jpg" style="width:500px" style="float:right"></p>
+            
+        </div>
+        
+        
+        <div class="w3-panel">
+            <h2>Equilibrium.</h2>
+            
+            <p>Equilibrium requires that the algebraic sum of forces and moments on a system are equal to zero. <br> Mathematically, in a 2D system of foces, this requires:</p>
+            <p class="w3-center"> \(\Sigma F_x =0\)  &nbsp;&nbsp;&nbsp;&nbsp;\(\Sigma F_y = 0\) &nbsp;&nbsp;&nbsp;&nbsp;  \(\Sigma M_o = 0\)</p>    
+        </div>
+        
+        
+        
+        <script>
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+        </script>
+    </body>
+    
+</html>

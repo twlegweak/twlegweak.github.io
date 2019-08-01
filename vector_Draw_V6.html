@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!-- -->
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vector Components</title>
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async>
+</script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+<header class="w3-container w3-teal">
+  <h1>Vector Components</h1>
+  <p> Draw a vector with magnitude and angle, calculate the components of the vector</p>
+</header>
+
+<div class="w3-container" style=" text-align:center;">
+		<canvas id="theCanvas" width="500" height="330" style="position:relative;">
+		           Canvas not supported; please update your browser.
+        </canvas>
+</div>
+  
+  <div class="w3-container" style="text-align:center;">
+        <button class="w3-btn w3-red" onclick="drawVector();"> Draw </button>
+        &nbsp;&nbsp;&nbsp;
+        <button class="w3-btn w3-blue" onclick="solveComponents();"> Solve </button>
+        
+<p> </p>
+</div>
+
+ <div style="text-align:center;">
+  <button class="w3-btn w3-yellow" onclick="displayEquation()">Written solution</button>
+ </div>
+ 
+ <div id="myDIV" style="text-align:center;">
+
+  <p> \(F_x =\) <span id="demo"></span>\(\;  \cos \) <span id="demo1"></span>\(^\circ =\) <span id="demo2"></span> \( N\) </p>
+  <p> \(F_y =\) <span id="demo3"></span>\(\;  \sin \) <span id="demo4"></span>\(^\circ =\) <span id="demo5"></span> \( N\) </p>
+  </div>
+ 
+ <div class="w3-container">
+  <p>Instructions: </p> 
+  <ul>
+  <li>Click 'Draw' to draw a new vector. </li> 
+  <li>Click 'Solve' to show the components and their magnitudes </li>
+  <li>Click Draw to clear plot and try again. </li> 
+  </ul>
+  <p>A written solution can be shown by clicking 'Written Solution'.</p>
+  <p> For the \(x\) component $$F_x = F \cos \theta_x$$ For the \(y\) component $$F_y = F \sin \theta_x$$ </p>
+  <p> Department of Engineering </p>
+ </div>
+ 
+  
+  <script>
+	var c = document.getElementById("theCanvas");
+    var ctx = c.getContext("2d");
+	var x0 = theCanvas.width / 2;
+	var y0 = 250;
+	var x, y, x1, y1, theta, F;
+
+drawAxis();
+clearSolution();
+
+function clearSolution() {
+		// Initially hides written solution 
+		document.getElementById("myDIV").style.display = "none";
+        blank = "";
+        document.getElementById("demo").innerHTML = blank;
+    	document.getElementById("demo1").innerHTML = blank;
+    	document.getElementById("demo2").innerHTML = blank;
+    	document.getElementById("demo3").innerHTML = blank;
+    	document.getElementById("demo4").innerHTML = blank;
+    	document.getElementById("demo5").innerHTML = blank;
+     }   
+        
+function displayEquation() {
+	//Shows hidden solution
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+	
+function drawAxis() {
+	
+    //Draws an x-y axis on the canvas
+    var linWgt = 1
+	var linClr = "black";
+	// X axis
+	var fromxX = 10;
+	var fromyX = 250;
+	var toxX = c.width - 10;
+	var toyX = fromyX;
+	// Y axis
+	var fromxY = c.width / 2;
+	var fromyY = y0 + 10;
+	var toxY = fromxY;
+	var toyY = 15;
+	
+	// Draw Axis
+	drawArrow(fromxX, fromyX, toxX, toyX, linWgt, linClr);
+	drawArrow(fromxY, fromyY, toxY, toyY, linWgt, linClr);
+	
+	// Axis labels
+	ctx.font = "italic 12px sans-serif";
+	ctx.textBaseline = "middle";
+	ctx.fillText("x", toxX + 2, 250 );
+	ctx.fillText("y", x0, toyY - 8 );
+	}
+	
+function drawVector() {
+	// Clear old results and redraw axis
+    clearPlot();
+    drawAxis();
+    clearSolution();
+    // Vector Properties
+    var linClr = "red";
+	var linWgt = 3;
+    //Random vecotr magnitude and angle
+    F = randomNum(60, 200);	// Newtons
+    theta = randomNum(20, 160); //A number in degrees
+    	// Ensure angle is not between 80 and 110 degrees (makes the drawing hard to read)
+    	if (theta  > 80 && theta <= 90) {
+    		theta = 80;
+   		} else if (theta > 90 && theta < 110) {
+   			theta = 110;
+   		} else {
+   			theta = theta;
+   		}
+        
+    var thetaRad = theta *Math.PI/180;	//Convert angle to radians for futher work
+    
+    //Calculate x and y locations of vector for plotting
+	x = F * Math.cos(thetaRad);
+	y = F * Math.sin(thetaRad);
+   	x1 = x0 + x;
+	y1 = y0 - y;
+    
+	drawArrow(x0, y0, x1, y1, linWgt, linClr);	//Draw Vector
+
+		
+    // Draw angle arc
+	ctx.beginPath();
+	ctx.arc(x0, y0, 45, -thetaRad, 0);
+	ctx.strokeStyle = "black";
+    ctx.lineWidth = 1;
+	ctx.stroke();
+
+    // Print values for magnitude and angle.
+	ctx.font = "12px sans-serif";
+	ctx.fillStyle = "black";
+    ctx.textBaseline = "bottom";
+    ctx.textAlign = "left";
+	ctx.fillText("Magnitude, F = " + F + " N", 10, y0 + 40);
+	ctx.fillText("Angle, \u03B8\u2093 = " + theta + " deg", 10, y0 + 60);
+	
+    // Apply labels
+    var FX = x0 + (F + 10) * Math.cos(thetaRad);
+    var FY = y0 - (F + 10) * Math.sin(thetaRad);
+	ctx.font = "bold 15px sans-serif";
+	ctx.fillStyle = "black";
+    ctx.textBaseline = "alphabetic";
+    ctx.textAlign = "centre";
+	ctx.fillText("F", FX, FY );
+	var thetaX = x0 + 50 * Math.cos(thetaRad / 2);
+    var thetaY = y0 - 50 * Math.sin(thetaRad / 2);
+	ctx.fillText("\u03B8\u2093", thetaX, thetaY);	
+    
+
+	}
+
+function solveComponents() {
+	// Plots the vector components and returns numerical values for the written solution 
+	var linClr = "red";
+	var linWgt = 3;
+	drawArrow(x0, y0, x1, y0, linWgt, linClr);	//Draw X component
+	drawArrow(x0, y0, x0, y1, linWgt, linClr);	//Draw Y component
+    
+    ctx.font = "12px sans-serif";
+	ctx.fillStyle = "black";
+	ctx.fillText("Fx = " + x.toFixed(2) + " N", x0 + 10, y0 + 40);
+	ctx.fillText("Fy = " + y.toFixed(2) + " N", x0 + 10, y0 + 60);
+    
+    document.getElementById("demo").innerHTML = F;
+    document.getElementById("demo1").innerHTML = theta;
+    document.getElementById("demo2").innerHTML = x.toFixed(2);
+    document.getElementById("demo3").innerHTML = F;
+    document.getElementById("demo4").innerHTML = theta;
+    document.getElementById("demo5").innerHTML = y.toFixed(2);
+    
+    var fyLoc = x0 - 27;
+    if (x < 0) {
+    fyLoc = x0 + 2 ;
+    }
+    
+    ctx.font = "bold 15px sans-serif";
+	ctx.fillStyle = "black";
+    ctx.textAlign = "centre";  
+    ctx.fillText("Fx", x1 , y0 +20);
+	ctx.fillText("Fy", fyLoc, y1 - 8);
+    
+ 	}
+
+
+function clearPlot() {
+		//Clears the plot/canvas
+            ctx.clearRect(0, 0, c.width, c.height);
+        }
+
+function randomNum(min, max) {
+		// Generates a random integer number between given bounds, min and max
+	return Math.round(Math.random() * (max - min) + min);
+	}
+	
+	
+function drawArrow(fromx, fromy, tox, toy, linWgt, linClr){
+                //variables to be used when creating the arrow
+            
+                var headlen = 10;
+
+                var angle = Math.atan2(toy-fromy,tox-fromx);
+
+                //starting path of the arrow from the start square to the end square and drawing the stroke
+                ctx.beginPath();
+                ctx.moveTo(fromx, fromy);
+                ctx.lineTo(tox, toy);
+                ctx.strokeStyle = linClr;
+                ctx.lineWidth = linWgt;
+                ctx.stroke();
+
+                //starting a new path from the head of the arrow to one of the sides of the point
+                ctx.beginPath();
+                ctx.moveTo(tox, toy);
+                ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+
+                //path from the side point of the arrow, to the other side point
+                ctx.lineTo(tox-headlen*Math.cos(angle+Math.PI/7),toy-headlen*Math.sin(angle+Math.PI/7));
+
+                //path from the side point back to the tip of the arrow, and then again to the opposite side point
+                ctx.lineTo(tox, toy);
+                ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/7),toy-headlen*Math.sin(angle-Math.PI/7));
+
+                //draws the paths created above
+				ctx.strokeStyle = linClr;
+                ctx.lineWidth = linWgt;
+                ctx.stroke();
+                ctx.fillStyle = linClr;
+                ctx.fill();
+            }
+  
+  </script>
+  </body>
+
+</html>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <title>MechEngPrinciples</title>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles/w3.css"> 
+        <link rel="stylesheet" href="styles/myCSS.css">
+        <link rel="stylesheet" href="styles/w3-theme-blue.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" async  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" sync></script>
+
+    </head>
+
+    <body>
+        
+        <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width:300px;" id="mySidebar">
+            
+            <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+            
+            <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="index.html"><img src="images/logo.png" style="width:80%;"></a>
+            <a href="vector_Draw_V6.html" class="w3-bar-item w3-button">Statics</a>
+            <a href="#" class="w3-bar-item w3-button">Equilibrium</a>
+            <a href="#" class="w3-bar-item w3-button">Pin Jointed Structures</a>
+        
+        </div>
+        
+        <div class="w3-theme">
+            
+            <i class="fa fa-bars w3-button w3-theme w3-xlarge" onclick="w3_open()"></i>
+            
+            <header class="w3-container w3-theme  w3-center">
+                <h1 class="w3-xxxlarge ">Mechanical Engineering Principles</h1>
+                <h2 class="w3-left-align">Statics</h2>
+            </header>
+            
+        </div>
+        
+        <! Content here>      
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button" onclick="openContent('Overview')">Overview</button>
+            <button class="w3-bar-item w3-button" onclick="openContent('Forces')">Forces</button>
+            <button class="w3-bar-item w3-button" onclick="openContent('Rectangular Components')">Rectangular Components</button>
+        </div>
+
+        <div id="Overview" class="w3-container content">
+          <h2>Overview</h2>
+          <p>Within the field of solid mechanics, statics is the study of external forces that act on solid bodies. Any resulting deformation is not considered consequently the solid bodies are assumed to be rigid. Furthermore, only bodies at rest or moving with zero acceleration are considered and this means that they remain in a state of equilibrium. <br>The aim is simply to discover information about the unknown forces and this can be determined from the known forces and geometric data. It is not necessary to know from what material the solid bodies are made.</p>
+        </div>
+
+        <div id="Forces" class="w3-container content" style="display:none">
+            <h2>Forces</h2>
+            <p>Forces have four characteristics:</p> 
+            <ul>
+                <li>Magnitude -- the size of the force as specified in appropriate units;</li>
+                <li>Direction -- the line of action along which the force acts;</li>
+                <li>Sense -- the direction of the force along its line of action;</li>
+                <li>Point of Application -- refers to the location on the object where the force acts.</li>
+            </ul>
+            <p class="w3-center">
+            <img src="images/force-as-a-vector.png" width="600px" alt="Force as a Vector">
+            </p>
+            <p>In an engineering context force magnitudes are typically specified in \(kN\) or \(MN\). The sense is often a push or a pull and the direction can be along a line inclined at any angle to a reference axis. <br> Forces may be exerted on objects directly or indirectly. Wind blowing on the wall of a building is an example of the direct application of a force. The self-weight of a bridge is an indirect force because it originates from gravity acting on the bridge's mass. In these two examples the force is distributed because the point of application covers a large portion of the total dimension available. A concentrated force acts over a relatively small portion of the total dimension available. <br>Forces can be external or internal. Look at the simple frame in the diagram below.
+            </p>
+            <p class="w3-center">
+            <img src="images/pin-frame.png" width="600px" alt="Pin Joint Frame">
+            </p>
+            <p>In this example, the externally applied concentrated forces  \(F_1\) and \(F_2\) transmit through the various members of the frame to the external supports at A and B. The frame therefore exerts external forces on the supports. Applying Newton's 3rd Law:
+            </p>
+            <blockquote class="w3-panel w3-leftbar w3-light-grey">
+                <p class="w3-large">
+                    <i>“to every action there is an equal and opposite reaction"</i></p>
+            </blockquote>
+            <p>to the supports, the supports must exert equal but opposite external forces on the frame. Those forces exerted are called <span><em><strong>reacting forces</strong></em></span> or <span><em><strong>reactions</strong></em></span>. <br> In order to transmit the external forces to the supports each member of the frame plays its part by transmitting some portion of the total externally applied force. The forces transmitted by the members are internal forces. It is these forces which may cause the members to break or fail in some way. The study of internal forces and their effects on the solid bodies involved is called mechanics (or strength) of materials. <br> Statics deals only with external forces and more often than not requires the engineer to determine the magnitude, direction and sense of the reactions; the point of application is usually known. This can be done without any knowledge about the internal forces and their effects on the solid bodies involved. Now it should be clear why the assumption that, in Statics, all solid bodies are said to be rigid i.e. they do not deform is valid. <br> A force is a vector quantity characterised by magnitude, direction and sense. In solid mechanics we represent concentrated forces by lines. Usually the lines are not drawn to scale and the force magnitude is stated.
+            </p>
+            <p class="w3-center">
+            <img src="images/vectors.png" width="600px" alt="Vectors">
+            </p>
+            <p>The sense is indicated by an arrow head shown on the line of action. <br>Vectors cannot be added algebraically unless they have the same line of action. This is because the line of action is as significant as the magnitude and sense. Forces must be added vectorially which can be done mathematically or graphically. When adopting the graphical approach each force to be added must be drawn at a convenient scale to represent their magnitudes. In the example below, force AB is to be added to force BC. Each force is drawn to scale along their respective lines of action with the sense shown by an arrowhead
+            </p>
+            <p class="w3-center">
+            <img src="images/vector-addition.png" width="600px" alt="Vector addition">
+            </p>
+            <p>The outcome of the addition is a resultant force (resultant, \(R\)) and is, in this case, determined by drawing a line from \(A\) to \(C\). Since the lines are drawn to scale the magnitude of the resultant is calculated from:
+                \[\text{Force magnitude} = \text{length of line} \, AC× \text{scale}\]
+                The direction of its line of action can be measured from a reference axis using a protractor.
+            </p>
+        </div>
+
+        <div id="Rectangular Components" class="w3-container content" style="display:none">
+            <h2>Rectangular Components</h2>
+            <p>Engineers frequently work in rectangular components. In 2 dimensions this is usually in the x-y plane.</p>
+            <p class="w3-center">
+            <img src="images/vector-components.png" width="400px" alt="Vector components">
+            </p>
+            
+            <p>The magnitude of \(\mathbf{V}\) is a scalar quantity</p>
+            
+            <table class="w3-table-all w3-centered">
+                <tr class="w3-theme">
+                  <th>The magnitudes are:</th>
+                  <th>Scalar calculation:</th>
+                  
+                </tr>
+                <tr>
+                  <td>\(\mathbf{V} \, \text{is} \, V\)</td>
+                  <td>\(V = \sqrt{V^2_x + V^2_y}\)</td>
+                </tr>
+                <tr>
+                  <td>\(\mathbf{V_x} \, \text{is} \, V_x\)</td>
+                  <td>\(V_x = V \cos{\theta_x}\)</td>
+                </tr>
+                <tr>
+                  <td>\(\mathbf{V_y} \, \text{is} \, V_y\)</td>
+                  <td>\(V_x = V \sin{\theta_x}\)</td>
+                </tr>
+                <tr>
+                  <td>\(\mathbf{V} = \mathbf{V_x} + \mathbf{V_y}\)</td>
+                  <td>\(\theta_x = \tan^{-1} \frac{V_y}{V_x} \)</td>
+                </tr>
+            </table>
+            <p>\[\text{Note:} \, V \neq V_x + V_y \] </p>
+            
+            <a href="vector_Draw_V6.html" class="w3-btn w3-theme">Try an Interactive Example</a>
+            <p>When working with scalars it is important to note their sign (i.e. they can be positive or negative). The sign depends upon the quadrant the vector points</p>
+            
+            <p>Engineers frequently work in rectangular components. In 2 dimensions this is usually in the x-y plane.</p>
+            <p class="w3-center">
+            <img src="images/sign-quadrants.png" width="400px" alt="Vector sign">
+            </p>
+        </div>
+        
+        
+        
+        <script>
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+            
+            function openContent(contentName) {
+                var i;
+                var x = document.getElementsByClassName("content");
+                for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+                }
+                document.getElementById(contentName).style.display = "block";  
+            }
+        </script>
+    </body>
+    
+</html>
